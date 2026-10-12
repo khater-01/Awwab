@@ -22,7 +22,7 @@
         </div>
 
         <div class="footer-img">
-          <img src="/images/attara_spices.png" alt="بهارات وتوابل عطارة أواب" />
+          <img src="/images/attara_spices.webp" alt="بهارات وتوابل عطارة أواب" />
         </div>
 
         <div class="footer-social">

@@ -44,7 +44,7 @@
       </div>
       <div class="hero-image">
         <img
-          src="/images/attara_hero.png"
+          src="/images/attara_hero.webp"
           alt="عطارة وبن أواب - بهارات وتوابل طبيعية وأعشاب"
           class="hero-img-element"
         />

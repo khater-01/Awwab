@@ -562,6 +562,9 @@ onUnmounted(() => window.removeEventListener("brunee:switch-tab", onSwitchTab))
     grid-template-columns: 1fr;
     gap: 20px;
   }
+    .menu-quick-search input {
+    font-size: 16px !important;
+    }
 }
 
 .sync-note {

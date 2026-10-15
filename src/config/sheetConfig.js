@@ -13,10 +13,11 @@ export const SHEET_CONFIG = {
   storeName: "عطارة وبن أوّاب",
 
   // رقم الواتساب لاستقبال الطلبات الفورية وسلة المشتريات
-  whatsappNumber: "201009569606",
+  whatsappNumber: "201037268585",
 
   // رابط الشيت (أي رابط مشاركة عادي). لازم الشيت يكون مشارك: أي شخص معه الرابط (مشاهد)
-  sheetUrl: "https://docs.google.com/spreadsheets/d/1MEiu6IJ4IITRE-qBOFA6Qu4kF-aekHGjic7Yz5QgTZk/edit?gid=0",
+  sheetUrl:
+    "https://docs.google.com/spreadsheets/d/1MEiu6IJ4IITRE-qBOFA6Qu4kF-aekHGjic7Yz5QgTZk/edit?gid=0",
 
   // مدة صلاحية الكاش المحلي بالدقائق (بعدها بنحدّث في الخلفية من غير ما الزبون يستنى)
   cacheExpiryMinutes: 3,

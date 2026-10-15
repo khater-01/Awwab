@@ -183,7 +183,7 @@
               <input
                 type="text"
                 v-model="customer.name"
-                placeholder="الاسم الكريم"
+                placeholder="الاسم ثلاثي"
                 class="cust-input"
                 :class="{ 'input-error': errors.name }"
                 @input="errors.name = ''"

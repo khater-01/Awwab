@@ -165,5 +165,35 @@ function navigateToCategory(cat) {
   color: var(--accent, #C8A97E);
   font-weight: 600;
   margin-left: 4px;
+}/* تحسينات نافذة البحث للموبايل */
+@media (max-width: 768px) {
+  .search-panel {
+    width: 92vw !important;
+    max-width: 100% !important;
+    top: 15px !important;
+    left: 4vw !important;
+    right: 4vw !important;
+    transform: none !important; /* لإلغاء التوسيط القديم الذي يسبب خروجها عن الشاشة */
+    max-height: 85dvh !important; /* dvh تتعامل بذكاء مع ارتفاع الكيبورد */
+    display: flex !important;
+    flex-direction: column !important;
+    border-radius: 16px !important;
+  }
+
+  .search-input-wrap input {
+    font-size: 16px !important; /* لمنع الزووم الإجباري */
+  }
+
+  .search-results {
+    flex: 1 1 auto !important;
+    overflow-y: auto !important; /* تفعيل النزول والطلوع (السكرول) للنتائج براحة */
+    max-height: none !important;
+    padding-bottom: 20px !important;
+  }
+
+  .search-kbd {
+    display: none !important; /* إخفاء زرار ESC لأنه لا يفيد في الموبايل */
+  }
 }
+
 </style>

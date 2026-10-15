@@ -44,7 +44,11 @@
       </div>
       <div class="hero-image">
         <img
-          src="/images/attara_hero.webp"
+          :src="heroImg"
+          fetchpriority="high"
+          decoding="async"
+          width="520"
+          height="520"
           alt="عطارة وبن أواب - بهارات وتوابل طبيعية وأعشاب"
           class="hero-img-element"
         />
@@ -54,7 +58,8 @@
 </template>
 
 <script setup>
-// Static hero
+import { assetUrl } from "../config/sheetConfig.js"
+const heroImg = assetUrl("/images/attara_hero.webp")
 </script>
 
 <style scoped>

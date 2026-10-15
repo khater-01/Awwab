@@ -22,7 +22,7 @@
         </div>
 
         <div class="footer-img">
-          <img src="/images/attara_spices.webp" alt="بهارات وتوابل عطارة أواب" />
+          <img :src="footerImg" loading="lazy" alt="بهارات وتوابل عطارة أواب" />
         </div>
 
         <div class="footer-social">
@@ -58,5 +58,7 @@
 </template>
 
 <script setup>
+import { assetUrl } from "../config/sheetConfig.js"
+const footerImg = assetUrl("/images/attara_spices.webp")
 // Static footer
 </script>

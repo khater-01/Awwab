@@ -1,5 +1,5 @@
 <template>
-  <section class="section-bestselling" id="bestselling">
+  <section v-if="bestSellers.length" class="section-bestselling" id="bestselling">
     <div class="container">
       <div class="bestselling-head fade-up">
         <span class="head-tag">⭐ الأكثر طلباً في خان العمار</span>
@@ -33,58 +33,30 @@
 <script setup>
 import { ref, onMounted } from "vue"
 import ProductCard from "./ProductCard.vue"
-import { fetchLiveMenu } from "../services/sheetService.js"
+import { fetchLiveMenu, getInstantMenu } from "../services/sheetService.js"
 
-const bestSellers = ref([
-  {
-    name: "بن أواب محوج كلاسيك (وسط / فاتح)",
-    price: 130,
-    unit: "ربع كيلو",
-    desc: "توليفة ممتازة من البن البرازيلي والكولومبي محوجة بالحبهان، المستكة وزر الورد.",
-    img: "/images/attara_coffee.webp",
-    badge: "الأكثر مبيعاً ⭐",
-    available: true,
-    catName: "بن وقهوة",
-  },
-  {
-    name: "حبهان (هيل) أمريكي جامبو أخضر",
-    price: 850,
-    unit: "ربع كيلو",
-    desc: "حبهان أمريكي درجة أولى حبة كاملة خضراء برائحة نفاذة وطعم قوي للقهوة والشوربات.",
-    img: "/images/attara_spices.webp",
-    badge: "درجة أولى فاخر",
-    available: true,
-    catName: "توابل وبهارات",
-  },
-  {
-    name: "زيت زيتون سيناوي بكر ممتاز",
-    price: 220,
-    unit: "زجاجة 1 لتر",
-    desc: "معصور على البارد من أجود حبات زيتون سيناء، حموضة أقل من 0.7% غني بالأوميجا.",
-    img: "/images/attara_oils.webp",
-    badge: "عصرة أولى ع البارد",
-    available: true,
-    catName: "زيوت طبيعية",
-  },
-])
+// الأكثر مبيعًا بتيجي من عمود "الأكثر مبيعا" في الشيت (اكتب فيه: نعم).
+// لو مفيش أي منتج متعلّم، القسم ده بيتخفي بدل ما يعرض منتجات وهمية.
+const bestSellers = ref([])
+
+function pickFeatured(res) {
+  const featured = []
+  for (const [catKey, items] of Object.entries(res.menu)) {
+    items.forEach((item) => {
+      if (item.isBestSeller && item.available) {
+        featured.push({ ...item, catName: res.categories[catKey] || catKey })
+      }
+    }
+    )
+  }
+  return featured.slice(0, 3)
+}
+
+bestSellers.value = pickFeatured(getInstantMenu())
 
 onMounted(async () => {
   try {
-    const res = await fetchLiveMenu(false)
-    const featured = []
-    for (const [catKey, items] of Object.entries(res.menu)) {
-      items.forEach((item) => {
-        if (item.isBestSeller) {
-          featured.push({
-            ...item,
-            catName: res.categories[catKey] || catKey,
-          })
-        }
-      })
-    }
-    if (featured.length >= 3) {
-      bestSellers.value = featured.slice(0, 3)
-    }
+    bestSellers.value = pickFeatured(await fetchLiveMenu(false))
   } catch (e) {
     console.warn("Could not load dynamic best sellers:", e)
   }
@@ -116,7 +88,7 @@ onMounted(async () => {
 }
 
 .bestselling-head h2 {
-  font-family: "Amiri", "Playfair Display", Georgia, serif;
+  font-family: "Amiri", Georgia, serif;
   font-size: 2.6rem;
   color: var(--green, #1A3C34);
   margin-bottom: 12px;

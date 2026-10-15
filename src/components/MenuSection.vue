@@ -44,6 +44,8 @@
         </div>
       </div>
 
+      <p v-if="syncNote" class="sync-note">{{ syncNote }}</p>
+
       <!-- Loading State -->
       <div v-if="isLoading" class="cards-loading-grid">
         <div v-for="n in 6" :key="n" class="skeleton-card">
@@ -80,17 +82,19 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from "vue"
+import { ref, computed, onMounted, onUnmounted } from "vue"
 import ProductCard from "./ProductCard.vue"
-import { fetchLiveMenu } from "../services/sheetService.js"
-import { INITIAL_MENU, CATEGORY_NAMES } from "../data/menu.js"
+import { fetchLiveMenu, getInstantMenu } from "../services/sheetService.js"
 
 const activeTab = ref("all")
 const searchQuery = ref("")
-const isLoading = ref(false)
+const isLoading = ref(false) // مبنستخدمهاش للتحميل الأول: الصفحة بتترسم فورًا من الكاش/النسخة الاحتياطية
+const syncNote = ref("")
 
-const menuData = ref(INITIAL_MENU)
-const categories = ref(CATEGORY_NAMES)
+// رسم فوري بدون نت: آخر نسخة محفوظة على الجهاز أو النسخة الاحتياطية
+const instant = getInstantMenu()
+const menuData = ref(instant.menu)
+const categories = ref(instant.categories)
 
 const totalProductsCount = computed(() => {
   let count = 0
@@ -98,18 +102,6 @@ const totalProductsCount = computed(() => {
     count += (list || []).length
   }
   return count
-})
-
-const lastUpdatedText = computed(() => {
-  if (!lastUpdated.value) return ""
-  try {
-    return new Date(lastUpdated.value).toLocaleTimeString("ar-EG", {
-      hour: "2-digit",
-      minute: "2-digit",
-    })
-  } catch {
-    return ""
-  }
 })
 
 // تصفية المنتجات حسب القسم والبحث
@@ -142,33 +134,33 @@ function setTab(cat) {
   activeTab.value = cat
 }
 
+// تحديث الأسعار من الشيت في الخلفية — الزبون مبيستناش
 async function loadProducts(forceRefresh = false) {
-  isLoading.value = true
   try {
     const res = await fetchLiveMenu(forceRefresh)
     menuData.value = res.menu
     categories.value = res.categories
+    // لو القسم المختار اتشال من الشيت نرجع لـ "كل المنتجات"
+    if (activeTab.value !== "all" && !res.menu[activeTab.value]) activeTab.value = "all"
+    syncNote.value = res.error ? "تعذّر تحديث الأسعار حاليًا — بنعرض آخر أسعار محفوظة." : ""
   } catch (err) {
     console.error("Failed to load products:", err)
-  } finally {
-    isLoading.value = false
+  }
+}
+
+function onSwitchTab(e) {
+  if (e.detail) {
+    activeTab.value = e.detail
+    const menuSection = document.getElementById("menu")
+    if (menuSection) menuSection.scrollIntoView({ behavior: "smooth" })
   }
 }
 
 onMounted(() => {
   loadProducts(false)
-
-  // الاستماع لحدث تبديل القسم من أماكن أخرى
-  window.addEventListener("brunee:switch-tab", (e) => {
-    if (e.detail) {
-      activeTab.value = e.detail
-      const menuSection = document.getElementById("menu")
-      if (menuSection) {
-        menuSection.scrollIntoView({ behavior: "smooth" })
-      }
-    }
-  })
+  window.addEventListener("brunee:switch-tab", onSwitchTab)
 })
+onUnmounted(() => window.removeEventListener("brunee:switch-tab", onSwitchTab))
 </script>
 
 <style scoped>
@@ -196,7 +188,7 @@ onMounted(() => {
 }
 
 .menu-header h2 {
-  font-family: "Amiri", "Playfair Display", Georgia, serif;
+  font-family: "Amiri", Georgia, serif;
   font-size: 2.8rem;
   color: var(--green, #1A3C34);
   margin-bottom: 12px;
@@ -570,5 +562,12 @@ onMounted(() => {
     grid-template-columns: 1fr;
     gap: 20px;
   }
+}
+
+.sync-note {
+  text-align: center;
+  color: var(--text-muted, #5A7A6E);
+  font-size: 0.85rem;
+  margin: -16px auto 20px;
 }
 </style>

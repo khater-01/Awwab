@@ -157,9 +157,8 @@
   </nav>
 </template>
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 .nav-logo {
-  font-family: "Aref Ruqaa", serif;
+  font-family: "Aref Ruqaa", "Amiri", serif;
   font-weight: 700;
 }
 .nav-cart-btn {

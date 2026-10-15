@@ -75,7 +75,7 @@
 
 <script setup>
 import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
-import { SEARCH_INDEX, CATEGORY_NAMES } from '../data/menu.js'
+import { SEARCH_INDEX, INITIAL_CATEGORIES } from '../data/menu.js'
 import { fetchLiveMenu } from '../services/sheetService.js'
 
 const props = defineProps({ isOpen: Boolean })
@@ -84,7 +84,7 @@ const emit = defineEmits(['close'])
 const query = ref('')
 const inputRef = ref(null)
 const liveIndex = ref(SEARCH_INDEX)
-const currentCategories = ref(CATEGORY_NAMES)
+const currentCategories = ref(INITIAL_CATEGORIES)
 
 watch(() => props.isOpen, async (val) => {
   if (val) {

@@ -15,7 +15,7 @@
         text="في عطارة وبن أوّاب، ننتقي التوابل والأعشاب من مواطنها الأصلية مباشرة. ننقيها يدوياً ونطحنها طازجة على البارد لنحافظ على زيوتها العطرية وفوائدها الصحية ونكهتها الزكية التي تضفي على كل وجبة طابعاً ساحراً."
         link-text="استكشف التوابل والبهارات"
         link-href="#menu"
-        img-src="/images/attara_spices.webp"
+        :img-src="img.spices"
         img-alt="توابل وبهارات طازجة في عطارة أواب"
         layout="img-left"
       />
@@ -26,7 +26,7 @@
         text="توليفات بن فاخرة تجمع بين البن البرازيلي والكولومبي مع الحبهان الأخضر والمستكة والخلطات الملكية. بالإضافة إلى الزيوت الطبيعية المعصورة على البارد والعسل النقي ومنتجات السرجة البلدية المضمونة 100%."
         link-text="تصفح أصناف البن والزيوت"
         link-href="#menu"
-        img-src="/images/attara_coffee.webp"
+        :img-src="img.coffee"
         img-alt="بن محوج وزيوت طبيعية في عطارة أواب"
         layout="img-right"
       />
@@ -54,6 +54,12 @@ import FooterSection from "./components/FooterSection.vue"
 import SearchPanel from "./components/SearchPanel.vue"
 import Contact from "./components/Contact.vue"
 import CartDrawer from "./components/CartDrawer.vue"
+import { assetUrl } from "./config/sheetConfig.js"
+
+const img = {
+  spices: assetUrl("/images/attara_spices.webp"),
+  coffee: assetUrl("/images/attara_coffee.webp"),
+}
 
 const isDark = ref(false)
 const isSearchOpen = ref(false)

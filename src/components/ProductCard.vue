@@ -6,6 +6,7 @@
         :src="product.img"
         :alt="product.name"
         loading="lazy"
+        decoding="async"
         class="card-img"
         @error="handleImgError"
       />
@@ -291,7 +292,7 @@ const whatsappOrderUrl = computed(() => {
 }
 
 .card-title {
-  font-family: "Amiri", "Playfair Display", Georgia, serif;
+  font-family: "Amiri", Georgia, serif;
   font-size: 1.35rem;
   font-weight: 700;
   color: var(--green, #1A3C34);
@@ -333,7 +334,7 @@ const whatsappOrderUrl = computed(() => {
 }
 
 .price-val {
-  font-family: "Playfair Display", Georgia, serif;
+  font-family: "Amiri", Georgia, serif;
   font-size: 1.6rem;
   font-weight: 800;
   color: var(--green, #1A3C34);

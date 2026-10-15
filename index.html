@@ -3,19 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1A3C34" />
     <meta
       name="description"
       content="عطارة وبن أوّاب — خان العمار، مدينة العبور. أجود التوابل، الأعشاب الطبيعية، الزيوت المعصورة على البارد، والبن المحوج الطازج يومياً. تصفح الأسعار المحدثة واطلب مباشرة عبر واتساب."
     />
     <title>عطارة وبن أوّاب — أجود التوابل، الأعشاب الطبيعية والبن الأصيل</title>
+
+    <!--
+      الخطوط: بتتحمّل في الخلفية (media="print" ثم onload) عشان متوقفش رسم الصفحة.
+      قبل كده كانت <link rel="stylesheet"> عادية + 2 @import جوه الـ CSS،
+      وأي بطء في خطوط جوجل كان بيمنع الموقع من الفتح خالص على النت الضعيف.
+      لو الخط اتأخر، المتصفح بيستخدم خط النظام (Tahoma / Segoe UI) لحد ما يوصل.
+    -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Load only essential font weights to reduce payload -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700;800&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700;800&family=Aref+Ruqaa:wght@700&display=swap"
+      media="print"
+      onload="this.media='all'"
     />
-    <!-- Inline critical loading styles so user sees something immediately -->
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700;800&family=Aref+Ruqaa:wght@700&display=swap"
+      />
+    </noscript>
+
+    <!-- شاشة التحميل: CSS مضمّن عشان تظهر فورًا -->
     <style>
       #app-loader {
         position: fixed;
@@ -25,7 +41,7 @@
         justify-content: center;
         background: #F5F0E1;
         z-index: 99999;
-        transition: opacity 0.4s ease;
+        transition: opacity 0.3s ease;
       }
       #app-loader.fade-out {
         opacity: 0;
@@ -43,9 +59,36 @@
     </style>
   </head>
   <body>
-    <!-- Loading spinner shown until Vue mounts -->
     <div id="app-loader"><div class="loader-spinner"></div></div>
     <div id="app"></div>
+
+    <!--
+      شبكة أمان: مهما حصل (ملف JS اتأخر، خطأ، إلخ) شاشة التحميل بتختفي بعد 4 ثواني،
+      ولو الصفحة لسه فاضية بنعرض رسالة بدل دوّامة للأبد.
+    -->
+    <script>
+      (function () {
+        function hide() {
+          var l = document.getElementById("app-loader");
+          if (!l) return;
+          l.classList.add("fade-out");
+          setTimeout(function () { l.parentNode && l.parentNode.removeChild(l); }, 400);
+        }
+        window.__hideLoader = hide;
+        setTimeout(function () {
+          var app = document.getElementById("app");
+          if (app && !app.children.length) {
+            app.innerHTML =
+              '<div style="padding:48px 20px;text-align:center;font-family:Tahoma,Arial,sans-serif;color:#1A3C34;direction:rtl">' +
+              '<h2 style="margin:0 0 12px">النت بطيء شوية ⏳</h2>' +
+              '<p style="margin:0 0 20px">الموقع لسه بيتحمّل. جرّب تحدّث الصفحة.</p>' +
+              '<button onclick="location.reload()" style="padding:10px 24px;border:0;border-radius:24px;background:#1A3C34;color:#fff;font-size:16px;cursor:pointer">تحديث الصفحة</button>' +
+              "</div>";
+          }
+          hide();
+        }, 4000);
+      })();
+    </script>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

@@ -2,7 +2,7 @@
  * سكريبت تحويل الصور من PNG إلى WebP لتسريع تحميل الموقع
  * يقلل حجم الصور من ~9.6MB إلى ~1MB أو أقل
  */
-import sharp from 'sharp'
+import sharp from 'sharp'  
 import fs from 'fs'
 import path from 'path'
 

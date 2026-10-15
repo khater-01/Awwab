@@ -136,7 +136,7 @@ function getBadgeClass(badge) {
 
 // رابط الطلب المباشر عبر واتساب مع رسالة جاهزة وواضحة
 const whatsappOrderUrl = computed(() => {
-  const phone = SHEET_CONFIG.whatsappNumber || "201009569606"
+  const phone = SHEET_CONFIG.whatsappNumber || "201037268585"
   const unitText = props.product.unit ? ` (${props.product.unit})` : ""
   const message = `السلام عليكم ورحمة الله،\nأريد طلب: ${props.product.name}${unitText}\nالسعر: ${props.product.price} ج.م\nمن محل عطارة وبن أوّاب.`
   return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`

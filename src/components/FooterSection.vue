@@ -14,16 +14,14 @@
         <div class="footer-contact">
           <h4>العنوان والتواصل</h4>
           <p>
-            <strong>العنوان:</strong> مدينة العبور - الحي الثاني - <br />
+            <strong>العنوان:</strong>  مدينة العبور - الحي الثاني - محليه ٣٤ بجوار صيدليه محمد سامي<br />
             <strong>الهاتف:</strong> <a href="tel:+201037268585">01037268585</a>
             <br />
             <strong>مواعيد العمل:</strong> يومياً من 7 صباحاً إلى 8 مساءً
           </p>
         </div>
 
-        <div class="footer-img">
-          <img :src="footerImg" loading="lazy" alt="بهارات وتوابل عطارة أواب" />
-        </div>
+    
 
         <div class="footer-social">
           <h4>تواصل وتابع العروض</h4>

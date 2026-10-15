@@ -41,9 +41,7 @@
               </div>
               <div>
                 <div class="ci-label">العنوان</div>
-                <div class="ci-value">
-                  مدينة العبور - الحي الثامن - خان العمار
-                </div>
+                <div class="ci-value">العبور - الحي 2 - محليه ٣٤ بجوار صيدليه محمد سامي </div>
               </div>
             </div>
             <div class="contact-item">
@@ -51,7 +49,7 @@
               <div>
                 <div class="ci-label">ساعات العمل</div>
                 <div class="ci-value">
-                  طول الأسبوع من الساعة 7 صباحاً إلى 8 مساءً
+                  طول الأسبوع من الساعة 7 صباحاً إلى 1 منتصف الليل
                 </div>
               </div>
             </div>

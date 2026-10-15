@@ -38,7 +38,7 @@
           </div>
           <div class="stat">
             <div class="stat-number">العبور</div>
-            <div class="stat-label">الحي 2</div>
+            <div class="stat-label">الحي 2 محليه ٣٤ بجوار صيدليه محمد سامي</div>
           </div>
         </div>
       </div>

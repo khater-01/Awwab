@@ -132,7 +132,7 @@ export function useCart() {
 
   // إنشاء رابط الواتساب مع الفاتورة الكاملة
   function getWhatsAppCheckoutUrl(customer = {}) {
-    const phone = SHEET_CONFIG.whatsappNumber || "201009569606"
+    const phone = SHEET_CONFIG.whatsappNumber || "201037268585"
     if (cartItems.value.length === 0) return `https://wa.me/${phone}`
 
     let text = `🛒 *طلب جديد من موقع عطارة وبن أوّاب*\n`

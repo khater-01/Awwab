@@ -10,12 +10,6 @@
     />
     <title>عطارة وبن أوّاب — أجود التوابل، الأعشاب الطبيعية والبن الأصيل</title>
 
-    <!--
-      الخطوط: بتتحمّل في الخلفية (media="print" ثم onload) عشان متوقفش رسم الصفحة.
-      قبل كده كانت <link rel="stylesheet"> عادية + 2 @import جوه الـ CSS،
-      وأي بطء في خطوط جوجل كان بيمنع الموقع من الفتح خالص على النت الضعيف.
-      لو الخط اتأخر، المتصفح بيستخدم خط النظام (Tahoma / Segoe UI) لحد ما يوصل.
-    -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -62,10 +56,7 @@
     <div id="app-loader"><div class="loader-spinner"></div></div>
     <div id="app"></div>
 
-    <!--
-      شبكة أمان: مهما حصل (ملف JS اتأخر، خطأ، إلخ) شاشة التحميل بتختفي بعد 4 ثواني،
-      ولو الصفحة لسه فاضية بنعرض رسالة بدل دوّامة للأبد.
-    -->
+
     <script>
       (function () {
         function hide() {

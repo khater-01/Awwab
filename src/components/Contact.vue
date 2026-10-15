@@ -16,11 +16,11 @@
               </div>
               <div>
                 <div class="ci-label">اتصل بنا</div>
-                <div class="ci-value">01009569606 - 01128366165</div>
+                <div class="ci-value">01037268585</div>
               </div>
             </a>
             <a
-              href="https://chat.whatsapp.com/BW2jRQVjr0HKur9KlAFUj3?mode=gi_t"
+              href="https://whatsapp.com/channel/0029VbDwOv9GZNCixuMYdS3n"
               class="contact-item"
               target="_blank"
             >
@@ -59,14 +59,14 @@
         </div>
         <div class="map-wrap reveal">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3445.870467917297!2d31.4829205!3d30.2692717!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14580579f1591dd9%3A0xaa14e6260fc8ea62!2z2LPZhtiq2LEg2K7Yp9mGINin2YTYudmF2KfYsQ!5e0!3m2!1sen!2seg!4v1776883296533!5m2!1sen!2seg"
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2863.267222285462!2d31.47339057556146!3d30.245870574822845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzDCsDE0JzQ1LjEiTiAzMcKwMjgnMzMuNSJF!5e1!3m2!1sen!2seg!4v1792030536914!5m2!1sen!2seg"
             width="100%"
             height="450"
             style="border: 0"
             allowfullscreen=""
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            title="موقع محل طيور الرحمه على الخريطة"
+            title="موقع محل عطاره وبن-أواب على الخريطة"
           ></iframe>
         </div>
       </div>
